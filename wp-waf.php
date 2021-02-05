@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: WP WAF
-Plugin URI: http://wordpress.org/plugins/wp-waf/
-Description: WP WAF - WordPress Application Firewall. Protects against web attacks. Email notification is disabled by default, notification can be activated and configured in <strong>Settings -> WP WAF</strong>. Go to your <a href="options-general.php?page=wp_waf">WP WAF configuration</a> page.
-Author: Gianni 'guelfoweb' Amato
+Plugin Name: Safer WP WAF
+Plugin URI: https://linker-wp.webnode.com
+Description: Safer WP WAF - WordPress Application Firewall. Protects against web attacks. Email notification is disabled by default, notification can be activated and configured in <strong>Settings -> WP WAF</strong>. Go to your <a href="options-general.php?page=wp_waf">WP WAF configuration</a> page.
+Author: Boter Technologies
 Version: 2.0
-Author URI: https://github.com/guelfoweb/wp-waf/
+Author URI: https://linker-wp.webnode.com
 */
 
 $blog_wpurl  = get_bloginfo( 'wpurl' );
@@ -14,9 +14,9 @@ $admin_email = get_option( 'admin_email' );
 
 /* Set alert */
 $alert  = "<br><center>";
-$alert .= "<h2>WP_WAF</h2>";
+$alert .= "<h2>Safer WP Firewall</h2>";
 $alert .= "<img src='" . plugin_dir_url( __FILE__ ) . "stuff/wp_waf.png' /><br>";
-$alert .= "<b><font color=\"red\">Your request has been blocked!</font></b><br><br>";
+$alert .= "<b><font color=\"red\">Oh no! Your request has been blocked. Please try again later or/and contact the site owner.</font></b><br><br>";
 $alert .= "<i>See <a href='" . plugin_dir_url( __FILE__ ) . "stuff/README'>README</a> file for more info.</i>";
 $alert .= "</center>";
 
@@ -53,7 +53,7 @@ function wp_waf_email( $attack_type, $log, $matched, $via ) {
 	$waf_msg   = isset( $settings['waf_msg'] ) ? $settings['waf_msg'] : '';
 
 	/* Compose email */
-	$subject = "WP_WAF - $blog_name";
+	$subject = "Safer Protection - $blog_name";
 	$body    = "== Attack Details ==\n\n";
 	$body   .= "TYPE: $attack_type\n";
 	$body   .= "MATCHED: \"$matched\"\n";
